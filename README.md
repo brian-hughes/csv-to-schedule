@@ -26,3 +26,13 @@ When you create a JotForm entry you need to do a couple things.
 * Final field is a Yes/No only field if they want to be in multiple sessions. Some people only want 1 session, others want to be in as many as possible..
 
 Download the csv file and put it on your computer.
+
+## Running the progam
+
+Edit the settings.properties file. Change any values. You can affect the number of people allowed in each session, and you can change where the csv file is located. By default the file is named import.csv and is placed in the same directory.
+```
+MAX_PEOPLE_PER_EVENT=5
+CSV_FILE=./import.csv
+```
+
+To run the application, make sure you have Java 21+ SDK in your $PATH then run `./gradlew run` and look at the output

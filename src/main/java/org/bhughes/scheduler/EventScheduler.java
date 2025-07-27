@@ -35,11 +35,11 @@ public class EventScheduler {
     public static void scheduleEvents(List<Person> people, HashMap<String, Day>days) {
 
         assignOneSession(people);
-        printSchedule(days.values(), "First Pass: Assigned everyone we can get in at least once.");
+        //printSchedule(days.values(), "First Pass: Assigned everyone we can get in at least once.");
         
         // Second pass: fill remaining slots with unassigned people who have multiple options
         assignMultiDayAttendees(people, new ArrayList<>(days.values()));
-        printSchedule(days.values(), "Second Pass: Assigned multi-session attendees");
+        //printSchedule(days.values(), "Second Pass: Assigned multi-session attendees");
 
 
         //TODO: This hasn't been needed yet so I haven't re-implemented it in the refactored design
@@ -59,10 +59,8 @@ public class EventScheduler {
         List<Person> sortedAttendees = new ArrayList<>(attendees);
         sortedAttendees.sort(Comparator.comparingInt(p -> p.availableDays().size()));
         for (Person person : sortedAttendees) {
-            System.out.println(person.name());
             for (Day day : person.availableDays()) {
                 if (day.attendees().size() < MAX_PEOPLE_PER_DAY) {
-                    System.out.println("Scheduling " + person + " for " + day);
                     day.attendees().add(person);
                     person.scheduledDays().add(day);
                     break;
