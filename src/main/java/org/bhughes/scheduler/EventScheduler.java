@@ -72,6 +72,9 @@ public class EventScheduler {
     static void fillWaitList(List<Person> attendees) {
         List<Person> sortedAttendees = new ArrayList<>(attendees);
         for (Person person : sortedAttendees) {
+            if(!person.multiSession() && !person.availableDays().isEmpty()) {
+                continue;
+            }
             for (Day day : person.availableDays()) {
                 if(!person.scheduledDays().contains(day)) {
                     person.waitlistedDays().add(day);
